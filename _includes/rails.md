@@ -1,71 +1,101 @@
-# TODO just move this to README.md?
+## Prerequisites
 
-=begin prerequisites
+Install rvm from https://rvm.io, then:
 
-# install rvm: 
-# https://rvm.io/
-
+```bash
 rvm install 2.0.0
+```
+
+Install postgres:
+
+```bash
 sudo apt-get install postgresql libpq-dev
+```
 
-=end
+Rails 4 requires a javascript runtime:
 
+```bash
+sudo apt-get install nodejs
+```
 
-=begin just a list of commands for now, not yet scriptified
+## Initialize project
+
+```bash
 git clone git@github.com:iqnivek/REPOSITORY_NAME.git
 cd REPOSITORY_NAME
+```
 
-# rvm - ruby version and gemset
+## Create gemset with rvm
+
+```bash
 rvm --ruby-version --create use 2.0.0-p<patchlevel>@REPOSITORY_NAME
 git add .
 git commit -am "Add ruby-version and gemset"
 gem install bundler
 gem install rails  # if you want a new version of rails
+```
 
-# troubleshooting: gem permissions issue? try reinstalling rvm ruby.. weird
+Install gems:
 
-# rails 4: requires javascript runtime
-sudo apt-get install nodejs
-
-# install gems
+```bash
 bundle install
+```
 
-# install rails
+Create rails project:
+
+```bash
 cd ..
 rails new REPOSITORY_NAME -d postgresql
 cd REPOSITORY_NAME
-# (accept rvm thing)
 
-# commit rails files
-git commit -am "Initialize rails project"
+git add .
+git commit -m "Initialize rails project"
+```
 
-# ignore vim swp files
+Ignore vim swp files:
+
+```bash
 echo "*.swp" >> .gitignore
 git commit -am "Ignore vim .swp files"
+```
 
-# database configuration
+Configure database:
+
+```bash
 echo "config/database.yml" >> .gitignore
 git mv config/database.yml config/database.yml.template
 cp config/database.yml.template config/database.yml
 git commit -am "Move database.yml to database.yml.template and add database.yml to .gitignore" # enter correct username/password in database.yml
+```
 
-# postgres configuration
-#
-# Password prompt, allow creating databases, no superuser, no role creation
+## Postgres configuration
+
+Create new user with password prompt, allow creating databases, no superuser, no role creation:
+
+```bash
 sudo -u postgres createuser -P -d -R -S <username>
+```
 
-# setup pg_hba.conf
-# http://stackoverflow.com/questions/5817301/rake-dbcreate-fails-authentication-problem-with-postgresql-8-4
+Setup pg_hba.conf, as described here: http://stackoverflow.com/questions/5817301/rake-dbcreate-fails-authentication-problem-with-postgresql-8-4
 
-# create db
+Create database:
+
+```bash
 rake db:create
 rake db:migrate
 git add db/schema.rb
 git commit -am "Add schema.rb"
+```
 
-# test that you can boot rails server
+Test that you can boot rails server:
+
+```bash
 rails s
+```
 
+## TODO formatting
+
+```
 # add some useful gems (some are optional)
 # [DEPRECATED] patch -p0 < gemfile-additions.diff  # TODO fix path for real script
 #
@@ -133,51 +163,4 @@ git commit -am "Make pages#index homepage"
     - sudo /etc/init.d/nginx reload
 
 5. cap production deploy
-
-=end
-
-
-=begin refineryCMS
-
-# On local and remote
-sudo apt-get install imagemagick
-
-# Setup .ruby-version and .ruby-gemset
-# (see previous)
-
-gem install refinerycms
-gem install execjs [???]
-
-# Go to parent folder and make sure using the right gemset
-cd ..
-rvm use RUBY_VERSION@GEMSET
-
-# Add postgres user (on local and remote)
-# (see previous, createuser)
-
-# RefineryCMS generator NOT working:
-# refinerycms FOLDERNAME -d postgresql -u USERNAME -p PASSWORD
-
-# Add to existing app
-# http://refinerycms.com/guides/with-an-existing-rails-app
-rails new FOLDERNAME -d postgresql
-
-# Add refinerycms to gemfile and bundle install (bundle update if needed)
-
-# Initialize refinery
-rails generate refinery:cms --fresh-installation
-
-#
-# Customizing
-#
-
-  # Modifying an existing engine
-  # http://stackoverflow.com/questions/7139343/refinerycms-adding-an-image-field-to-the-blog-engine
-
-  # Adding page parts
-  # http://refinerycms.com/guides/changing-page-parts
-  
-  # Overridable views
-  # https://gist.github.com/ryandeussing/2502881
-
-=end
+```

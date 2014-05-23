@@ -1,6 +1,6 @@
 ## Initialize project folder with a new gemset
 
-```
+```bash
 PROJECT='new_project_name'
 RUBY_VERSION='2.0.0-p247'
 
@@ -13,7 +13,7 @@ git commit -m "Add ruby-version"
 
 ## Create gemfile
 
-```
+```bash
 cat > Gemfile <<DELIM
 source 'https://rubygems.org'
 gem 'jekyll'
@@ -30,7 +30,7 @@ git commit -m "Add jekyll gem and other dependencies"
 
 ## Create new jekyll project
 
-```
+```bash
 cd ..
 rvm use $RUBY_VERSION@$PROJECT
 jekyll new --force $PROJECT
@@ -43,7 +43,7 @@ git commit -m "Create new jekyll project"
 
 Add to `_config.yml`:
 
-```
+```yaml
 gems:
 - jekyll-compass
 ```
