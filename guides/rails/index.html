@@ -1,4 +1,5 @@
 ---
 ---
 
-{% markdown rails.md %}
+{% capture markdowncontent %}{% include rails.md %}{% endcapture %}
+{{ markdowncontent | markdownify }}

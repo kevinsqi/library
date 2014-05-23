@@ -1,4 +1,5 @@
 ---
 ---
 
-{% markdown jekyll.md %}
+{% capture markdowncontent %}{% include jekyll.md %}{% endcapture %}
+{{ markdowncontent | markdownify }}
