@@ -1,3 +1,6 @@
+## Initialize project folder with a new gemset
+
+```
 PROJECT='new_project_name'
 RUBY_VERSION='2.0.0-p247'
 
@@ -6,23 +9,56 @@ cd $PROJECT
 rvm --ruby-version --create $RUBY_VERSION@$PROJECT
 git add .
 git commit -m "Add ruby-version"
+```
 
+## Create gemfile
+
+```
 cat > Gemfile <<DELIM
 source 'https://rubygems.org'
-gem 'github-pages'
-gem 'foundation'
+gem 'jekyll'
+gem 'jekyll-compass'
+
+gem 'bourbon'
+gem 'bitters'
+gem 'neat'
 DELIM
 bundle install
 git add Gemfile*
-git commit -m "Add foundation and jekyll gems"
+git commit -m "Add jekyll gem and other dependencies"
+```
 
+## Create new jekyll project
+
+```
 cd ..
 rvm use $RUBY_VERSION@$PROJECT
 jekyll new --force $PROJECT
 cd $PROJECT
 git add .
 git commit -m "Create new jekyll project"
+```
 
-cd ..
-rvm use $RUBY_VERSION@$PROJECT
-foundation new $PROJECT
+## jekyll-compass
+
+Add to `_config.yml`:
+
+```
+gems:
+- jekyll-compass
+```
+
+Install files:
+
+```
+compass create -r jekyll-compass --app=jekyll <project_path>
+```
+
+## Install bourbon, bitters, and neat
+
+```
+cd _sass
+bourbon install
+neat install
+bitters install
+```
