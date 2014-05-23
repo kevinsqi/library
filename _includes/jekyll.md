@@ -62,3 +62,13 @@ bourbon install
 neat install
 bitters install
 ```
+
+## Deploying with Capistrano
+
+http://wolfslittlestore.be/2013/10/rendering-markdown-in-jekyll/
+
+Use older version of Capistrano in Gemfile:
+
+```
+gem 'capistrano', '~> 2.15.4'
+```
