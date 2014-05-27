@@ -28,7 +28,7 @@ gem 'capistrano', '~> 2.15.4'
 DELIM
 bundle install
 git add Gemfile*
-git commit -m "Add jekyll gem and other dependencies"
+git commit -m "Add gem dependencies"
 ```
 
 ## Create new jekyll project
@@ -84,6 +84,8 @@ Customize config/deploy.rb
 ```bash
 wget https://raw.githubusercontent.com/iqnivek/library/master/config/deploy.rb
 # customize it and replace config/deploy.rb
+git add .
+git commit -m "Capify and customize deploy.rb"
 ```
 
 Setup and deploy
@@ -102,4 +104,10 @@ server {
   root /home/iqnivek/devel/library/current;
   index index.html;
 }
+```
+
+Reload nginx config
+
+```bash
+sudo /etc/init.d/nginx reload
 ```
