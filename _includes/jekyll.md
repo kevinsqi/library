@@ -39,6 +39,13 @@ git add .
 git commit -m "Create new jekyll project"
 ```
 
+```bash
+cat >> .gitignore <<DELIM
+.sass-cache
+*.swp
+DELIM
+```
+
 ## jekyll-compass
 
 Add to `_config.yml`:
