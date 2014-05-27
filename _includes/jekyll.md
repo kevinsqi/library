@@ -19,9 +19,12 @@ source 'https://rubygems.org'
 gem 'jekyll'
 gem 'jekyll-compass'
 
-gem 'bourbon'
+gem 'sass', '3.2'
+gem 'bourbon', '~> 3.2'
 gem 'bitters'
-gem 'neat'
+gem 'neat', '1.5'
+
+gem 'capistrano', '~> 2.15.4'
 DELIM
 bundle install
 git add Gemfile*
@@ -57,13 +60,13 @@ gems:
 
 Install files:
 
-```
+```bash
 compass create -r jekyll-compass --app=jekyll <project_path>
 ```
 
 ## Install bourbon, bitters, and neat
 
-```
+```bash
 cd _sass
 bourbon install
 neat install
@@ -72,10 +75,31 @@ bitters install
 
 ## Deploying with Capistrano
 
-http://wolfslittlestore.be/2013/10/rendering-markdown-in-jekyll/
-
-Use older version of Capistrano in Gemfile:
-
+```bash
+capify .
 ```
-gem 'capistrano', '~> 2.15.4'
+
+Customize config/deploy.rb
+
+```bash
+wget https://raw.githubusercontent.com/iqnivek/library/master/config/deploy.rb
+# customize it and replace config/deploy.rb
+```
+
+Setup and deploy
+
+```bash
+cap deploy:setup
+cap deploy
+```
+
+Add site to nginx.conf
+
+```nginx
+server {
+  listen 80;
+  server_name library.kevinqi.com;
+  root /home/iqnivek/devel/library/current;
+  index index.html;
+}
 ```
