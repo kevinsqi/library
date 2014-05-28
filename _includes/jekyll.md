@@ -73,6 +73,17 @@ neat install
 bitters install
 ```
 
+## (Optional) Remove default styling
+
+```bash
+git rm css/main.css
+cat > _sass/main.scss <<DELIM
+@import "bourbon/bourbon";
+@import "neat/neat";
+@import "bitters/bitters";
+DELIM
+```
+
 ## Deploying with Capistrano
 
 ```bash
