@@ -35,16 +35,11 @@ gem install bundler
 gem install rails  # if you want a new version of rails
 ```
 
-Install gems:
-
-```bash
-bundle install
-```
-
 Create rails project:
 
 ```bash
 cd ..
+rvm use 2.0.0-p<patchlevel>@REPOSITORY_NAME
 rails new REPOSITORY_NAME -d postgresql
 cd REPOSITORY_NAME
 
@@ -76,7 +71,7 @@ Create new user with password prompt, allow creating databases, no superuser, no
 sudo -u postgres createuser -P -d -R -S <username>
 ```
 
-Setup pg_hba.conf, as described here: http://stackoverflow.com/questions/5817301/rake-dbcreate-fails-authentication-problem-with-postgresql-8-4
+[Setup pg_hba.conf as described here.](http://stackoverflow.com/questions/5817301/rake-dbcreate-fails-authentication-problem-with-postgresql-8-4)
 
 Create database:
 
