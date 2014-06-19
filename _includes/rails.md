@@ -63,6 +63,8 @@ cp config/database.yml.template config/database.yml
 git commit -am "Move database.yml to database.yml.template and add database.yml to .gitignore" # enter correct username/password in database.yml
 ```
 
+Edit config/database.yml - add `username: REPOSITORY_NAME` and `password` to defaults.
+
 ## Postgres configuration
 
 Create new user with password prompt, allow creating databases, no superuser, no role creation:
@@ -79,7 +81,7 @@ Create database:
 rake db:create
 rake db:migrate
 git add db/schema.rb
-git commit -am "Add schema.rb"
+git commit -m "Add schema.rb"
 ```
 
 Test that you can boot rails server:
