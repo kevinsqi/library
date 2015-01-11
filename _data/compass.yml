@@ -1,9 +1,0 @@
----
-require:
-- jekyll-compass
-project_path: /home/iqnivek/devel/library
-http_path: /
-css_dir: css
-sass_dir: _sass
-images_dir: images
-javascripts_dir: javascripts

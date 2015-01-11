@@ -1,6 +1,0 @@
-name: Library
-markdown: redcarpet
-pygments: true
-
-gems:
-- jekyll-compass
