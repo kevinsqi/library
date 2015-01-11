@@ -1,4 +1,6 @@
-# Development library
+### TODO port pages to wiki, link to guides from here?
+
+https://github.com/iqnivek/library/wiki
 
 ## TODO
 
